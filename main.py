@@ -15,6 +15,10 @@ dining_hall.link_room(kitchen, "north")
 ballroom.link_room(dining_hall, "east")
 dining_hall.link_room(ballroom, "west")
 
+kitchen.describe()
+dining_hall.describe()
+ballroom.describe()
+
 
 
 

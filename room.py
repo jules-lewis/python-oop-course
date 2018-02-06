@@ -23,6 +23,9 @@ class Room():
         print(40 * "-")
         print(self._name)
         print(self._description)
+        for direction in self._linked_rooms:
+            room = self._linked_rooms[direction]
+            print( "The " + room.name + " is " + direction)
         print(40 * "-")
 
     def link_room(self, room_to_link, direction):
