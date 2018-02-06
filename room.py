@@ -1,6 +1,7 @@
 class Room():
     def __init__(self, room_name = None):
         self.name = room_name
+        self._linked_rooms = {}
         
     @property
     def description(self):
@@ -23,4 +24,9 @@ class Room():
         print(self._name)
         print(self._description)
         print(40 * "-")
+
+    def link_room(self, room_to_link, direction):
+        self._linked_rooms[direction] = room_to_link
+
+
 
