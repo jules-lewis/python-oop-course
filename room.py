@@ -26,6 +26,8 @@ class Room():
         for direction in self._linked_rooms:
             room = self._linked_rooms[direction]
             print( "The " + room.name + " is " + direction)
+        print(40 * "-")
+        print()
 
     def link_room(self, room_to_link, direction):
         self._linked_rooms[direction] = room_to_link
@@ -34,6 +36,7 @@ class Room():
         if direction in self._linked_rooms:
             return self._linked_rooms[direction]
         else:
+            print()
             print("You can't go that way")
             return self
 
