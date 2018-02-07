@@ -18,8 +18,8 @@ class Character():
 
     # Talk to this character
     def talk(self):
-        if self.conversation is not None:
-            print("[" + self.name + " says]: " + self.conversation)
+        if self._conversation is not None:
+            print("[" + self.name + " says]: " + self._conversation)
         else:
             print(self.name + " doesn't want to talk to you")
 

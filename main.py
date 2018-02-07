@@ -22,27 +22,33 @@ dining_hall.link_room(kitchen, "north")
 ballroom.link_room(dining_hall, "east")
 dining_hall.link_room(ballroom, "west")
 
-sword = Item("Sword")
-sword.description = "Glamdring: white and gold, in an ivory sheath."
-sword.describe()
-
-lamp = Item("Lamp")
-lamp.description = "The textile shade provides a diffused and decorative light."
-lamp.describe()
-
 current_room = kitchen
-while True:		
-    current_room.describe()         
-    command = input("> ")    
-    current_room = current_room.move(command)
+current_room.describe()  
+game_loop = True
+
+while game_loop:		
+    command = input("> ")
+    if command == "help":
+        print("Available commands are: north, east, south, west, talk, fight, help, quit.")
+    elif command in ["north", "east", "south", "west"]:
+        current_room = current_room.move(command)
+        current_room.describe()
+    elif command == "quit":
+        game_loop = False
+    elif command == "talk":
+        if current_room.character == None:
+            print("There is no one to talk to!")
+        else:
+            current_room.character.talk()
+    elif command == "fight":
+        if current_room.character == None:
+            print("There is no one to fight!")
+        else:
+            print("What will you fight with?")
+            fight_with = input()
+            game_loop = current_room.character.fight(fight_with)
+            if not game_loop:
+                print("GAME OVER")
+    else:
+        print("I didn't recognise that command. Hint: try 'help'.")
     print()
-
-
-
-
-
-
-
-
-
-
