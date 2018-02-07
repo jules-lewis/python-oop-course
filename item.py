@@ -21,7 +21,14 @@ class Item():
 
     def describe(self):
         print(40 * "-")
-        print(self._name)
-        print(self._description)
+        if self._name == None:
+            print("No name set.")
+        else:
+            print(self._name)
+        
+        if self._description == None:
+            print("No description set.")
+        else:
+            print(self._description)
         print(40 * "-")
         print()

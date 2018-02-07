@@ -16,9 +16,6 @@ dining_hall.link_room(kitchen, "north")
 ballroom.link_room(dining_hall, "east")
 dining_hall.link_room(ballroom, "west")
 
-bedroom = Room()
-bedroom.describe()
-
 sword = Item("Sword")
 sword.description = "Glamdring: white and gold, in an ivory sheath."
 sword.describe()
