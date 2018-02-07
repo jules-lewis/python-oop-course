@@ -4,7 +4,7 @@ class Character():
     def __init__(self, char_name, char_description):
         self.name = char_name
         self.description = char_description
-        self.conversation = None
+        self._conversation = None
 
     # Describe this character
     def describe(self):
@@ -12,8 +12,9 @@ class Character():
         print(self.description)
 
     # Set what this character will say when talked to
-    def set_conversation(self, conversation):
-        self.conversation = conversation
+    def conversation(self, character_conversation):
+        self._conversation = character_conversation
+    conversation = property(None, conversation)
 
     # Talk to this character
     def talk(self):

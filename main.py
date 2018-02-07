@@ -1,11 +1,17 @@
 from room import Room
 from item import Item
+from character import Enemy
+
+dave = Enemy("Dave", "A smelly zombie")
+dave.conversation = "Brrlgrh... rgrhl... brains..."
+dave.weakness = "cheese"
 
 kitchen = Room("Kitchen")
 kitchen.description = "A dank and dirty room buzzing with flies"
 
 dining_hall = Room("Dining Hall")
 dining_hall.description = "A large room with ornate golden decorations on each wall."
+dining_hall.character = dave
 
 ballroom = Room("Ballroom")
 ballroom.description = "A vast room with a shiny wooden floor. Huge candlesticks guard the entrance."

@@ -1,8 +1,11 @@
+from character import Character
+
 class Room():
     def __init__(self, room_name = None, room_description = None):
         self.name = room_name
         self.description = room_description
         self._linked_rooms = {}
+        self._character = None
         
     @property
     def description(self):
@@ -20,6 +23,14 @@ class Room():
     def name(self, room_name):
         self._name = room_name
 
+    @property
+    def character(self):
+        return self._character
+
+    @character.setter
+    def character(self, character):
+        self._character = character
+
     def describe(self):
         print(40 * "-")
 
@@ -35,7 +46,11 @@ class Room():
         
         for direction in self._linked_rooms:
             room = self._linked_rooms[direction]
-            print( "The " + room.name + " is " + direction)
+            print("The " + room.name + " is " + direction)
+
+        if self.character != None:
+            self.character.describe()
+            
         print(40 * "-")
         print()
 
