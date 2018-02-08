@@ -1,3 +1,5 @@
+from item import Item
+
 class Character():
 
     # Create a character
@@ -29,9 +31,11 @@ class Character():
         return True
 
 class Enemy(Character):
+    _enemy_count = 0
     def __init__(self, char_name, char_description):
         super().__init__(char_name, char_description)
         self.weakness = None
+        Enemy._enemy_count += 1
             
     @property
     def weakness(self):
@@ -41,11 +45,47 @@ class Enemy(Character):
     def weakness(self, enemy_weakness):
         self._weakness = enemy_weakness
 
+    def enemy_count(self):
+        return Enemy._enemy_count
+    enemy_count = property(enemy_count, None)
+
     def fight(self, combat_item):
         if combat_item == self.weakness:
-            print("You fend " + self.name + " off with the " + combat_item )
+            print("You defeat " + self.name + " with the " + combat_item +"!")
+            Enemy._enemy_count -= 1
             return True
         else:
-            print(self.name + " crushes you, puny adventurer")
+            print(self.name + " crushes you, puny adventurer!")
             return False
 
+class Friend(Character):
+    def __init__(self, char_name, char_description):
+        super().__init__(char_name, char_description)
+        self.has_had_a_hug = False
+        self.item_carried = None
+
+    def set_item_carried(self, new_item):
+        if new_item is not None:
+            if isinstance(new_item, Item):
+                self.item_carried = new_item
+                return
+        raise ValueError("new_item parameter should be of type Item.")
+        
+    def hug(self):
+        if self.has_had_a_hug:
+            print(self.name + " says 'One hug is fine thanks.'")
+        else:
+            print("You give " + self.name + " a lovely hug. " + self.name + " may be feeling generous now.")
+            self.has_had_a_hug = True
+
+    def ask(self):
+        if self.item_carried is not None:
+            if self.has_had_a_hug:
+                return_item = Item(self.item_carried.name, self.item_carried.description)
+                print(self.name + " gives you " + return_item.name + ".")
+                self.item_carried = None
+                return return_item
+            else:
+                print(self.name + " needs a hug.")
+        else:
+            print(self.name + " isn't carrying anything.")

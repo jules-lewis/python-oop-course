@@ -5,7 +5,8 @@ class Room():
         self.name = room_name
         self.description = room_description
         self._linked_rooms = {}
-        self._character = None
+        self._enemy = None
+        self._friend = None
         
     @property
     def description(self):
@@ -24,12 +25,20 @@ class Room():
         self._name = room_name
 
     @property
-    def character(self):
-        return self._character
+    def enemy(self):
+        return self._enemy
 
-    @character.setter
-    def character(self, character):
-        self._character = character
+    @enemy.setter
+    def enemy(self, new_enemy):
+        self._enemy = new_enemy
+
+    @property
+    def friend(self):
+        return self._friend
+
+    @friend.setter
+    def friend(self, new_friend):
+        self._friend = new_friend
 
     def describe(self):
         print(40 * "-")
@@ -48,8 +57,11 @@ class Room():
             room = self._linked_rooms[direction]
             print("The " + room.name + " is " + direction)
 
-        if self.character != None:
-            self.character.describe()
+        if self.enemy is not None:
+            self.enemy.describe()
+            
+        if self.friend is not None:
+            self.friend.describe()
             
         print(40 * "-")
         print()
