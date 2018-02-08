@@ -1,47 +1,45 @@
-from room import Room
-from item import Item
-from character import Enemy, Friend
+import rpg
 
 #Our weapons -- you will need to get these from the friendly characters
-cheese = Item("Cheese", "A lovely smelly Gorgonzola!")
-magic_bean = Item("Magic bean", "Maybe Jack left this behind...")
-garlic = Item("Garlic", "Great for sorting out vampires")
+cheese = rpg.Item("Cheese", "A lovely smelly Gorgonzola!")
+magic_bean = rpg.Item("Magic bean", "Maybe Jack left this behind...")
+garlic = rpg.Item("Garlic", "Great for sorting out vampires")
 
 #The baddies, and their weaknesses
-dave = Enemy("Dave", "A smelly zombie")
+dave = rpg.Enemy("Dave", "A smelly zombie")
 dave.conversation = "Brrlgrh... rgrhl... brains..."
 dave.weakness = cheese.name
 
-tilda = Enemy("Tilda", "A poisonous toad")
+tilda = rpg.Enemy("Tilda", "A poisonous toad")
 tilda.conversation = "Ribbit..... ribbit....."
 tilda.weakness = magic_bean.name
 
-madge = Enemy("Madge", "A fearsome witch, Mildred's evil twin!")
+madge = rpg.Enemy("Madge", "A fearsome witch, Mildred's evil twin!")
 madge.conversation = "Hubble bubble, toil and trouble!"
 madge.weakness = garlic.name
 
 #Some friendlier folk... they might be able to help you
-fred = Friend("Fred", "A helpful giant")
+fred = rpg.Friend("Fred", "A helpful giant")
 fred.set_item_carried(cheese)
 
-mildred = Friend("Mildred", "A wise witch, Madge's helpful twin.")
+mildred = rpg.Friend("Mildred", "A wise witch, Madge's helpful twin.")
 mildred.set_item_carried(garlic)
 
-bascule = Friend("Bascule", "A curious fellow, with a kindly twinkle in his eyes.")
+bascule = rpg.Friend("Bascule", "A curious fellow, with a kindly twinkle in his eyes.")
 bascule.set_item_carried(magic_bean)
 
 #the map -- remember to mix up the goodies and baddies!
-kitchen = Room("Kitchen")
+kitchen = rpg.Room("Kitchen")
 kitchen.description = "A dank and dirty room buzzing with flies"
 kitchen.enemy = tilda
 kitchen.friend = mildred
 
-dining_hall = Room("Dining Hall")
+dining_hall = rpg.Room("Dining Hall")
 dining_hall.description = "A large room with ornate golden decorations on each wall."
 dining_hall.enemy = dave
 dining_hall.friend = bascule
 
-ballroom = Room("Ballroom")
+ballroom = rpg.Room("Ballroom")
 ballroom.description = "A vast room with a shiny wooden floor. Huge candlesticks guard the entrance."
 ballroom.enemy = madge
 ballroom.friend = fred

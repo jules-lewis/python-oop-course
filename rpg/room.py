@@ -1,4 +1,4 @@
-from character import Character
+from .character import Character
 
 class Room():
     def __init__(self, room_name = None, room_description = None):
